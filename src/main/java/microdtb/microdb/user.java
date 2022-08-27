@@ -1,19 +1,34 @@
 package microdtb.microdb;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity // This tells Hibernate to make a table out of this class
-public class user {
+public class User {
   @Id
   @GeneratedValue(strategy=GenerationType.AUTO)
   private Integer id;
 
+  @Column(unique=true)
+
+  private Integer cedula;
+  
   private String name;
 
   private String email;
+
+  private String apellido;
+
+  public Integer getCedula(){
+    return cedula;
+  }
+
+  public void setCedula(Integer cedula) {
+    this.cedula = cedula;
+  }
 
   public Integer getId() {
     return id;
@@ -38,4 +53,14 @@ public class user {
   public void setEmail(String email) {
     this.email = email;
   }
+
+  public String getApellido() {
+    return apellido;
+  }
+  public void setApellido(String apellido) {
+    this.apellido = apellido;
+  }
+  
+
+ 
 }

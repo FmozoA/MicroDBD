@@ -16,19 +16,22 @@ public class MainController {
     private UserRepository userRepository;
 
     @PostMapping(path = "/add") // Map ONLY POST Requests
-    public @ResponseBody String addNewUser(@RequestParam String name, @RequestParam String email) {
+    public @ResponseBody String addNewUser(@RequestParam String name, @RequestParam String email, @RequestParam String apellido, @RequestParam Integer cedula) {
         // @ResponseBody means the returned String is the response, not a view name
         // @RequestParam means it is a parameter from the GET or POST request
 
-        user userNuevo = new user();
+        User userNuevo = new User();
         userNuevo.setName(name);
         userNuevo.setEmail(email);
+        userNuevo.setApellido(apellido);
+        userNuevo.setCedula(cedula);
+
         userRepository.save(userNuevo);
         return "El usuario  "+name+" ha sido registrado";
     }
 
     @GetMapping(path = "/all")
-    public @ResponseBody Iterable<user> getAllUsers() {
+    public @ResponseBody Iterable<User> getAllUsers() {
         // This returns a JSON or XML with the users
         return userRepository.findAll();
     }
