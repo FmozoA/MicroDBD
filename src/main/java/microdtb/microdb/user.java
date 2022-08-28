@@ -50,7 +50,11 @@ public class User {
     return email;
   }
 
-  public void setEmail(String email) {
+  public void setEmail(String email) throws Exception{
+    //validar formato
+    if (!email.contains("@")){
+      throw new Exception("El email contiene un formato erroneo");
+    }
     this.email = email;
   }
 
