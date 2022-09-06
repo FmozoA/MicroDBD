@@ -1,3 +1,4 @@
+package microdtb.microdb;
 public class Input {
     private String id_user;
     private String operacion;

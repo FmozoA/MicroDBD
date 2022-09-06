@@ -17,17 +17,19 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.client.RestTemplate;
 
+
+
 @Controller
 @RequestMapping(path = "/user")
 public class MainController {
 
     private Logger logger = LoggerFactory.getLogger(MainController.class);
 
-    @Autowired
-    private UserRepository userRepository;
+    @Autowired 
+	private UserRepository userRepository;
 
     @PostMapping(value = "/add2", consumes = "application/json", produces = "application/json")
-    public @ResponseBody User addUser2(@RequestBody User user) {
+    public @ResponseBody User addUser2(@valid @RequestBody User user) {
         System.out.println("Consultado usuario");
         return userRepository.save(user);
     }
